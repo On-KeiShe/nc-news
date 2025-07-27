@@ -89,11 +89,11 @@ const seed = ({ topicData, userData, articleData, commentData }) => {
       const commentInsertQuery = format(
         `INSERT INTO comments (body, votes, author, article_id, created_at) VALUES %L;`,
         formattedComments.map(
-          ({ body, votes, author, created_at, article }) => [
+          ({ body, votes, author, article_title, created_at }) => [
             body,
             votes,
             author,
-            articleIdLookup[article],
+            articleIdLookup[article_title],
             created_at,
           ]
         )
