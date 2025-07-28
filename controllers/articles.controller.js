@@ -1,6 +1,6 @@
 const {
   fetchArticles,
-  fetchArticleByID,
+  fetchArticleById,
   insertCommentByArticleId,
   updateArticleVotes,
 } = require("../models/articles.model");
@@ -10,8 +10,8 @@ const {
 } = require("../models/exist-checks.model");
 
 const getArticles = (req, res) => {
-  const {sort_by, order} = req.query
-  return fetchArticles(sort_by, order).then((articles) => {
+  const {sort_by, order, topic} = req.query
+  return fetchArticles(sort_by, order, topic).then((articles) => {
     res.status(200).send({ articles });
   });
 };
@@ -21,7 +21,7 @@ const getArticleById = (req, res) => {
   if (isNaN(Number(article_id))) {
     return res.status(400).send({ msg: "Bad Request" });
   }
-  return fetchArticleByID(article_id).then((article) => {
+  return fetchArticleById(article_id).then((article) => {
     res.status(200).send({ article });
   });
 };

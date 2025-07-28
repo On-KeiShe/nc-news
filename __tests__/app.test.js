@@ -5,7 +5,6 @@ const app = require("../app");
 const db = require("../db/connection");
 const seed = require("../db/seeds/seed");
 const testData = require("../db/data/test-data");
-const comments = require("../db/data/test-data/comments");
 /* Set up your test imports here */
 
 /* Set up your beforeEach & afterAll functions here */
@@ -133,6 +132,7 @@ describe("GET /api/users", () => {
   test("each user object has the correct properties", () => {
     return request(app)
       .get("/api/users")
+      .expect(200)
       .then(({ body }) => {
         body.users.forEach((user) => {
           expect(user).toHaveProperty("username");
@@ -418,6 +418,78 @@ describe("GET /api/articles?sort_by", () => {
       .expect(400)
       .then(({ body }) => {
         expect(body.msg).toBe("Invalid order");
+      });
+  });
+});
+
+describe("GET /api/articles?topic=", () => {
+  test("200: responds with articles matching the given topic", () => {
+    return request(app)
+      .get("/api/articles?topic=mitch")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.articles.length).toBeGreaterThan(0);
+        body.articles.forEach((article) => {
+          expect(article.topic).toBe("mitch");
+        });
+      });
+  });
+
+  test("200: responds with an empty array if topic exists but has no articles", () => {
+    return request(app)
+      .get("/api/articles?topic=paper")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.articles).toEqual([]);
+      });
+  });
+
+  test("404: responds with an error if topic does not exist", () => {
+    return request(app)
+      .get("/api/articles?topic=non-existent-topic")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Topic does not exist");
+      });
+  });
+});
+
+describe("GET /api/articles/:article_id", () => {
+  test("200: responds with the correct article and includes comment_count", () => {
+    return request(app)
+      .get("/api/articles/1")
+      .expect(200)
+      .then(({ body }) => {
+        const article = body.article;
+        expect(article).toHaveProperty("article_id");
+        expect(article).toHaveProperty("comment_count");
+      });
+  });
+
+  test("200: responds with comment_count as 0 when article has no comments", () => {
+    return request(app)
+      .get("/api/articles/2")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.article.comment_count).toBe(0);
+      });
+  });
+
+  test("404: responds with error when article_id does not exist", () => {
+    return request(app)
+      .get("/api/articles/9999")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Article Not Found");
+      });
+  });
+
+  test("400: responds with error when article_id is invalid", () => {
+    return request(app)
+      .get("/api/articles/not-a-number")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
       });
   });
 });
