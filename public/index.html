@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northcoders NC News API</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+<header>
+  <h1>Northcoders NC News API</h1>
+        <section id="intro">
+        <p>
+          Welcome to the Northcoders News, a RESTful API providing access to a
+          database of articles, topics, users and comments for a fictional news
+          site as part of a backend project. All responses are in
+          <strong>JSON</strong> format.
+        </p>
+      </section>
+  <nav>
+    <h2>Quick Links to Endpoints</h2>
+    <div class="nav-grid">
+      <div class="nav-method">GET</div><div><a href="#get-api">/api</a></div>
+      <div class="nav-method">GET</div><div><a href="#get-topics">/api/topics</a></div>
+      <div class="nav-method">GET</div><div><a href="#get-articles">/api/articles</a></div>
+      <div class="nav-method">GET</div><div><a href="#get-article-id">/api/articles/:article_id</a></div>
+      <div class="nav-method">PATCH</div><div><a href="#patch-article">/api/articles/:article_id</a></div>
+      <div class="nav-method">GET</div><div><a href="#get-comments">/api/articles/:article_id/comments</a></div>
+      <div class="nav-method">POST</div><div><a href="#post-comment">/api/articles/:article_id/comments</a></div>
+      <div class="nav-method">DELETE</div><div><a href="#delete-comment">/api/comments/:comment_id</a></div>
+      <div class="nav-method">GET</div><div><a href="#get-users">/api/users</a></div>
+    </div>
+  </nav>
+</header>
+    <main>
+  <section id="get-api">
+    <h2>GET /api</h2>
+    <p>This endpoint returns a JSON object describing all the available endpoints in the API, along with their methods and descriptions.</p>
+    <p><strong>Route Parameter:</strong> None</p>
+    <p><strong>Query Parameters:</strong> None</p>
+    <p><strong>Request Body:</strong> Not required</p>
+    <p><strong>Example Response:</strong></p>
+    <pre class ="code-block"><code>
+</code>
+</pre>
+  <section id="get-topics">
+    <h2>GET /api/topics</h2>
+    <p>This endpoint returns a list of all available topics on the site. Each topic groups related articles together.</p>
+    <p><strong>Route Parameter:</strong> None</p>
+    <p><strong>Query Parameters:</strong> None</p>
+    <p><strong>Request Body:</strong> Not required</p>
+    <p><strong>Example Response:</strong></p>
+    <pre class ="code-block"><code>
+</code>
+</pre>
+</section>
+<section id="get-articles">
+  <h2>GET /api/articles</h2>
+  <p>This endpoint returns a list of all articles. Articles can be filtered, sorted, and ordered using optional query parameters.</p>
+
+  <p><strong>Route Parameter:</strong> None</p>
+  <p><strong>Query Parameters:</strong></p>
+  <ul>
+    <li>Filter articles by topic</li>
+    <li>Sort articles by any valid column, e.g.created_at, votes, comment_count</li>
+    <li>Order by ascending or descending (default is descending</li>
+  </ul>
+
+  <p><strong>Request Body:</strong> Not required</p>
+
+  <p><strong>Example Response:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+</section>
+<section id="patch-article">
+  <h2>PATCH /api/articles/:article_id</h2>
+  <p>This endpoint allows you to update the vote count of a specific article by its article_id.</p>
+
+  <p><strong>Route Parameter:</strong> The ID of the article you want to update (e.g./api/articles/1)</p>
+  <p><strong>Query Parameters:</strong> None</p>
+  <p><strong>Request Body:</strong> Required</p>
+  <pre class="code-block"><code>
+</code></pre>
+  <p><strong>Example Response:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+</section>
+<section id="get-comments">
+  <h2>GET /api/articles/:article_id/comments</h2>
+  <p>This endpoint returns all the comments for a specific article based on its <code>article_id</code>.</p>
+
+  <p><strong>Route Parameter:</strong>The ID of the article whose comments you want to retrieve (e.g. /api/articles/1/comments)</p>
+
+  <p><strong>Query Parameters:</strong> None</p>
+
+  <p><strong>Request Body:</strong> Not required</p>
+
+  <p><strong>Example Response:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+</section>
+<section id="post-comment">
+  <h2>POST /api/articles/:article_id/comments</h2>
+  <p>This endpoint allows you to add a new comment to a specific article.</p>
+
+  <p><strong>Route Parameter:</strong> The ID of the article you want to comment on (e.g./api/articles/1/comments)</p>
+  <p><strong>Query Parameters:</strong> None</p>
+  <p><strong>Request Body:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+
+  <p><strong>Example Response:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+</section>
+<section id="delete-comment">
+  <h2>DELETE /api/comments/:comment_id</h2>
+  <p>This endpoint deletes a comment based on its comment ID.</p>
+
+  <p><strong>Route Parameter:</strong> The ID of the comment you want to delete (e.g. <code>/api/comments/12</code>)</p>
+
+  <p><strong>Query Parameters:</strong> None</p>
+
+  <p><strong>Request Body:</strong> Not required</p>
+
+  <p><strong>Example Response:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+</section>
+<section id="get-users">
+  <h2>GET /api/users</h2>
+  <p>This endpoint returns a list of all users on the site.</p>
+
+  <p><strong>Route Parameter:</strong> None</p>
+
+  <p><strong>Query Parameters:</strong> None</p>
+
+  <p><strong>Request Body:</strong> Not required</p>
+
+  <p><strong>Example Response:</strong></p>
+  <pre class="code-block"><code>
+</code></pre>
+</section>
+    </main>
+    <footer></footer>
+  </body>
+</html>

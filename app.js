@@ -6,8 +6,9 @@ const {getArticles, getArticleById, postCommentByArticleId, patchArticleVotes} =
 const getUsers = require("./controllers/users.controller");
 const {getCommentsByArticleId, deleteCommentById} = require("./controllers/comments.controller");
 
+app.use(express.json())
 
-app.use(express.json());
+app.use("/api", express.static("public"));
 
 app.get("/api/topics", getTopics);
 
