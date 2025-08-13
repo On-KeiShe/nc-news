@@ -66,6 +66,7 @@ const fetchArticles = (sort_by = "created_at", order = "desc", topic) => {
 const fetchArticleById = (article_id) => {
 const queryStr = `
     SELECT 
+      articles.body,
       articles.author, 
       articles.title, 
       articles.article_id, 

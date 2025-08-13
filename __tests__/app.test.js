@@ -150,6 +150,7 @@ describe("GET /api/articles/:article_id", () => {
       .expect(200)
       .then(({ body }) => {
         const article = body.article;
+        expect(article).toHaveProperty("body");
         expect(article).toHaveProperty("author");
         expect(article).toHaveProperty("title");
         expect(article).toHaveProperty("article_id");
