@@ -2,7 +2,7 @@
 
 Welcome to my project NC News - a backend project for a news application using RESTful API. This project is built with **Node.js**, **Express** and **PostgreSQL**.
 
-NC News is a Reddit-style new aggregation app, providing data on articles, topics, users and comments. It supports queries for sorting anf filtering.
+NC News is a Reddit-style new aggregation app, providing data on articles, topics, users and comments. It supports queries for sorting and filtering.
 
 ## Hosted Version
 You can view the hosted version here:
