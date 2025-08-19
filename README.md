@@ -6,7 +6,7 @@ NC News is a Reddit-style new aggregation app, providing data on articles, topic
 
 ## Hosted Version
 You can view the hosted version here:
-https://
+https://https://nc-news-by3b.onrender.com/api
 
 ## Tech Stack
 - Node.js
