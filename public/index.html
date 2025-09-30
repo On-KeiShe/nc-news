@@ -11,8 +11,9 @@
       <h1>Northcoders NC News API</h1>
       <section id="intro">
         <p>
-          Welcome to the Northcoders News API, a RESTful API providing access to a
-          database of articles, topics, users, and comments. All responses are in
+          Welcome to the Northcoders News API, a RESTful API providing access to
+          a database of articles, topics, users, and comments. All responses are
+          in
           <strong>JSON</strong> format.
         </p>
       </section>
@@ -31,16 +32,22 @@
             <div><a href="#get-articles">/api/articles</a></div>
 
             <div class="nav-method">GET</div>
-            <div><a href="#get-article-by-id">/api/articles/:article_id</a></div>
+            <div>
+              <a href="#get-article-by-id">/api/articles/:article_id</a>
+            </div>
 
             <div class="nav-method">PATCH</div>
             <div><a href="#patch-article">/api/articles/:article_id</a></div>
 
             <div class="nav-method">GET</div>
-            <div><a href="#get-comments">/api/articles/:article_id/comments</a></div>
+            <div>
+              <a href="#get-comments">/api/articles/:article_id/comments</a>
+            </div>
 
             <div class="nav-method">POST</div>
-            <div><a href="#post-comment">/api/articles/:article_id/comments</a></div>
+            <div>
+              <a href="#post-comment">/api/articles/:article_id/comments</a>
+            </div>
 
             <div class="nav-method">DELETE</div>
             <div><a href="#delete-comment">/api/comments/:comment_id</a></div>
@@ -54,43 +61,58 @@
 
     <main>
       <section class="endpoints" id="get-api">
-        <h2><a href="https://nc-news-by3b.onrender.com/api" target="_blank">GET /api</a></h2>
-        <p>Returns a JSON object describing all available endpoints, including methods and descriptions.</p>
+        <h2>GET /api</h2>
+        <p>
+          Returns a JSON object describing all available endpoints, including
+          methods and descriptions.
+        </p>
         <p><strong>Route Parameter:</strong> None</p>
         <p><strong>Query Parameters:</strong> None</p>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>{
-  "endpoints": {
-    "GET /api/topics": "Returns all topics",
-    "GET /api/articles": "Returns all articles",
-    "GET /api/articles/:article_id": "Returns a single article by ID",
-    "PATCH /api/articles/:article_id": "Updates the vote count for an article",
-    "GET /api/articles/:article_id/comments": "Returns comments for a given article",
-    "POST /api/articles/:article_id/comments": "Adds a new comment to an article",
-    "DELETE /api/comments/:comment_id": "Deletes a comment by ID",
-    "GET /api/users": "Returns all users"
-  }
-}</code></pre>
+        <pre class="code-block"><code>
+[
+  {"GET/api"},
+  {"GET/api/topics"},
+  {"GET/api/articles"},
+  {"GET/api/articles/:article_id"},
+  {"PATCH/api/articles/:article_id"},
+  {"GET/api/articles/:article_id/comments"},
+  {"POST/api/articles/:article_id/comments"},
+  {"DELETE/api/comments/:comment_id"},
+  {"GET/api/users"}
+]</code></pre>
       </section>
 
       <section class="endpoints" id="get-topics">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/topics" target="_blank">GET /api/topics</a></h2>
+        <h2>
+          <a href="https://nc-news-by3b.onrender.com/api/topics" target="_blank"
+            >GET /api/topics</a
+          >
+        </h2>
         <p>Returns a list of all topics available on the site.</p>
         <p><strong>Route Parameter:</strong> None</p>
         <p><strong>Query Parameters:</strong> None</p>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>[
-  { "slug": "coding", "description": "Code is love, code is life" },
-  { "slug": "football", "description": "Footie news and opinions" },
-  { "slug": "cooking", "description": "Delicious recipes and cooking tips" }
+        <pre class="code-block"><code>
+[
+  {"slug": "coding","description": "Code is love, code is life","img_url": ""},
 ]</code></pre>
       </section>
 
       <section class="endpoints" id="get-articles">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/articles" target="_blank">GET /api/articles</a></h2>
-        <p>Returns all articles. You can filter, sort, and order them using query parameters.</p>
+        <h2>
+          <a
+            href="https://nc-news-by3b.onrender.com/api/articles"
+            target="_blank"
+            >GET /api/articles</a
+          >
+        </h2>
+        <p>
+          Returns all articles. You can filter, sort, and order them using query
+          parameters.
+        </p>
         <p><strong>Route Parameter:</strong> None</p>
         <p><strong>Query Parameters:</strong></p>
         <ul>
@@ -100,96 +122,181 @@
         </ul>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>[
-  { "article_id": 1, "title": "The Rise of Node.js", "topic": "coding", "author": "jessjelly", "votes": 100, "comment_count": 13 },
-  { "article_id": 2, "title": "Football Tactics in 2025", "topic": "football", "author": "grumpy19", "votes": 42, "comment_count": 5 }
+        <pre class="code-block"><code>
+[
+  {
+    "author": "grumpy19",
+    "title": "The Notorious MSG’s Unlikely Formula For Success",
+    "article_id": 34,
+    "topic": "cooking",
+    "created_at": "2020-11-22T11:13:00.000Z",
+    "votes": 6,
+    "article_img_url": "https://images.pexels.com/photos/2403392/pexels-photo-2403392.jpeg?w=700&h=700",
+    "comment_count": 11
+  }
 ]</code></pre>
       </section>
 
       <section class="endpoints" id="get-article-by-id">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1" target="_blank">GET /api/articles/:article_id</a></h2>
-        <p>Returns full details of a single article by <code>article_id</code>.</p>
-        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1)</p>
+        <h2>
+          <a
+            href="https://nc-news-by3b.onrender.com/api/articles/1"
+            target="_blank"
+            >GET /api/articles/:article_id</a
+          >
+        </h2>
+        <p>
+          Returns full details of a single article by <code>article_id</code>.
+        </p>
+        <p>
+          <strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1)
+        </p>
         <p><strong>Query Parameters:</strong> None</p>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>{
-  "article_id": 1,
-  "title": "The Rise of Node.js",
-  "topic": "coding",
-  "author": "jessjelly",
-  "body": "Node.js has taken the backend world by storm...",
-  "created_at": "2020-07-09T20:11:00.000Z",
-  "votes": 100,
-  "comment_count": 13
-}</code></pre>
+        <pre class="code-block"><code>
+[ 
+  {
+    "body": "This is part two of a series on how to get up and running with Systemd and Node.js. This part dives deeper into how to successfully run your app with systemd long-term, and how to set it up in a production environment.",
+    "author": "jessjelly",
+    "title": "Running a Node App",
+    "article_id": 1,
+    "topic": "coding",
+    "created_at": "2020-11-07T06:03:00.000Z",
+    "votes": 0,
+    "article_img_url": "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?w=700&h=700",
+    "comment_count": 8
+  }
+]</code></pre>
       </section>
 
       <section class="endpoints" id="patch-article">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1" target="_blank">PATCH /api/articles/:article_id</a></h2>
+        <h2>
+          <a
+            href="https://nc-news-by3b.onrender.com/api/articles/1"
+            target="_blank"
+            >PATCH /api/articles/:article_id</a
+          >
+        </h2>
         <p>Update the vote count of a specific article.</p>
-        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1)</p>
+        <p>
+          <strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1)
+        </p>
         <p><strong>Request Body:</strong></p>
         <pre class="code-block"><code>{
   "inc_votes": 1
 }</code></pre>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>{
-  "article_id": 1,
-  "votes": 101
-}</code></pre>
+        <pre class="code-block"><code>
+[
+  {
+    "article_id": 1,
+    "votes": 1
+  }
+]</code></pre>
       </section>
 
       <section class="endpoints" id="get-comments">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1/comments" target="_blank">GET /api/articles/:article_id/comments</a></h2>
+        <h2>
+          <a
+            href="https://nc-news-by3b.onrender.com/api/articles/1/comments"
+            target="_blank"
+            >GET /api/articles/:article_id/comments</a
+          >
+        </h2>
         <p>Returns all comments for the specified article.</p>
-        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1/comments)</p>
+        <p>
+          <strong>Route Parameter:</strong> Article ID (e.g.
+          /api/articles/1/comments)
+        </p>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>[
-  { "comment_id": 1, "author": "grumpy19", "body": "Great article!", "votes": 5, "created_at": "2020-07-09T20:11:00.000Z" }
+        <pre class="code-block"><code>
+[
+  {
+    "comment_id": 89,
+    "votes": 2,
+    "created_at": "2020-10-24T07:08:00.000Z",
+    "author": "cooljmessy",
+    "body": "Esse et expedita harum non. Voluptatibus commodi voluptatem. Minima velit suscipit numquam ea. Id vitae debitis aut incidunt odio quo quam possimus ipsum.",
+    "article_id": 1
+  }
 ]</code></pre>
       </section>
 
       <section class="endpoints" id="post-comment">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1/comments" target="_blank">POST /api/articles/:article_id/comments</a></h2>
+        <h2>
+          <a
+            href="https://nc-news-by3b.onrender.com/api/articles/1/comments"
+            target="_blank"
+            >POST /api/articles/:article_id/comments</a
+          >
+        </h2>
         <p>Add a new comment to an article.</p>
-        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1/comments)</p>
+        <p>
+          <strong>Route Parameter:</strong> Article ID (e.g.
+          /api/articles/1/comments)
+        </p>
         <p><strong>Request Body:</strong></p>
-        <pre class="code-block"><code>{
-  "username": "grumpy19",
-  "body": "This is my new comment!"
-}</code></pre>
+        <pre class="code-block"><code>
+[
+  {
+    "username": "grumpy19",
+    "body": "This is my new comment!"
+  }
+]</code></pre>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>{
-  "comment_id": 2,
-  "author": "grumpy19",
-  "body": "This is my new comment!",
-  "votes": 0,
-  "created_at": "2025-09-30T20:00:00.000Z"
-}</code></pre>
+        <pre class="code-block"><code>
+[
+  {
+    "comment_id": 2,
+    "author": "grumpy19",
+    "body": "This is my new comment!",
+    "votes": 0,
+    "created_at": "2025-09-30T20:00:00.000Z"
+  }
+]</code></pre>
       </section>
 
       <section class="endpoints" id="delete-comment">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/comments/1" target="_blank">DELETE /api/comments/:comment_id</a></h2>
+        <h2>
+          <a
+            href="https://nc-news-by3b.onrender.com/api/comments/1"
+            target="_blank"
+            >DELETE /api/comments/:comment_id</a
+          >
+        </h2>
         <p>Deletes a comment by its ID.</p>
-        <p><strong>Route Parameter:</strong> Comment ID (e.g. /api/comments/1)</p>
+        <p>
+          <strong>Route Parameter:</strong> Comment ID (e.g. /api/comments/1)
+        </p>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>{
-  "msg": "Comment deleted"
-}</code></pre>
+        <pre class="code-block"><code>
+[
+  {
+    "msg": "Comment deleted"
+  }
+]</code></pre>
       </section>
 
       <section class="endpoints" id="get-users">
-        <h2><a href="https://nc-news-by3b.onrender.com/api/users" target="_blank">GET /api/users</a></h2>
+        <h2>
+          <a href="https://nc-news-by3b.onrender.com/api/users" target="_blank"
+            >GET /api/users</a
+          >
+        </h2>
         <p>Returns a list of all users.</p>
         <p><strong>Route Parameter:</strong> None</p>
         <p><strong>Request Body:</strong> Not required</p>
         <p><strong>Example Response:</strong></p>
-        <pre class="code-block"><code>[
-  { "username": "jessjelly", "name": "Jess Jelly", "avatar_url": "https://example.com/avatar1.jpg" },
-  { "username": "grumpy19", "name": "Grumpy Cat", "avatar_url": "https://example.com/avatar2.jpg" }
+        <pre class="code-block"><code>
+[
+  {
+    "username": "tickle122",
+    "name": "Tom Tickle",
+    "avatar_url": "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953"
+  }
 ]</code></pre>
       </section>
     </main>
