@@ -6,7 +6,7 @@ body {
   background-image: url("newspaper-news-seamless-pattern-background-business-concept-illustration-news-symbol-pattern-vector.jpg");
   background-repeat: repeat;
   background-position: cover;
-    font-family: Avenir;
+  font-family: Avenir;
 }
 
 h1 {
@@ -23,24 +23,25 @@ h1 {
   text-align: center;
   padding: 40px;
   background-color: white;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);}
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);
+}
 
 #navigation {
-  margin:20px;
+  margin: 20px;
   margin-top: 50px;
-padding: 30px;
-background-color: white;
+  padding: 30px;
+  background-color: white;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);
   border-radius: 30px;
-    background-color: #f5ddcc;
-    color: #ae4b04;
-  }
+  background-color: #f5ddcc;
+  color: #ae4b04;
+}
 
-  h2{
-    margin-bottom: 40px;
-  }
+h2 {
+  margin-bottom: 40px;
+}
 
-  .nav-grid {
+.nav-grid {
   display: grid;
   grid-template-columns: 60px 1fr;
   gap: 8px 16px;
@@ -48,15 +49,17 @@ background-color: white;
 }
 
 .endpoints {
-    margin:20px;
+  margin: 20px;
   margin-top: 50px;
-padding: 30px;
-background-color: white;
+  padding: 30px;
+  background-color: white;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);
   border-radius: 30px;
-
 }
 
 .code-block {
-color: black;
+  color: black;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
