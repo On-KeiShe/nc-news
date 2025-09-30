@@ -7,141 +7,193 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-<header>
-  <h1>Northcoders NC News API</h1>
-        <section id="intro">
+    <header>
+      <h1>Northcoders NC News API</h1>
+      <section id="intro">
         <p>
-          Welcome to the Northcoders News, a RESTful API providing access to a
-          database of articles, topics, users and comments for a fictional news
-          site as part of a backend project. All responses are in
+          Welcome to the Northcoders News API, a RESTful API providing access to a
+          database of articles, topics, users, and comments. All responses are in
           <strong>JSON</strong> format.
         </p>
       </section>
-  <nav>
-    <h2>Quick Links to Endpoints</h2>
-    <div class="nav-grid">
-      <div class="nav-method">GET</div><div><a href="#get-api">/api</a></div>
-      <div class="nav-method">GET</div><div><a href="#get-topics">/api/topics</a></div>
-      <div class="nav-method">GET</div><div><a href="#get-articles">/api/articles</a></div>
-      <div class="nav-method">GET</div><div><a href="#get-article-id">/api/articles/:article_id</a></div>
-      <div class="nav-method">PATCH</div><div><a href="#patch-article">/api/articles/:article_id</a></div>
-      <div class="nav-method">GET</div><div><a href="#get-comments">/api/articles/:article_id/comments</a></div>
-      <div class="nav-method">POST</div><div><a href="#post-comment">/api/articles/:article_id/comments</a></div>
-      <div class="nav-method">DELETE</div><div><a href="#delete-comment">/api/comments/:comment_id</a></div>
-      <div class="nav-method">GET</div><div><a href="#get-users">/api/users</a></div>
-    </div>
-  </nav>
-</header>
+
+      <section id="navigation">
+        <nav>
+          <h2>Quick Links to Endpoints</h2>
+          <div class="nav-grid">
+            <div class="nav-method">GET</div>
+            <div><a href="#get-api">/api</a></div>
+
+            <div class="nav-method">GET</div>
+            <div><a href="#get-topics">/api/topics</a></div>
+
+            <div class="nav-method">GET</div>
+            <div><a href="#get-articles">/api/articles</a></div>
+
+            <div class="nav-method">GET</div>
+            <div><a href="#get-article-by-id">/api/articles/:article_id</a></div>
+
+            <div class="nav-method">PATCH</div>
+            <div><a href="#patch-article">/api/articles/:article_id</a></div>
+
+            <div class="nav-method">GET</div>
+            <div><a href="#get-comments">/api/articles/:article_id/comments</a></div>
+
+            <div class="nav-method">POST</div>
+            <div><a href="#post-comment">/api/articles/:article_id/comments</a></div>
+
+            <div class="nav-method">DELETE</div>
+            <div><a href="#delete-comment">/api/comments/:comment_id</a></div>
+
+            <div class="nav-method">GET</div>
+            <div><a href="#get-users">/api/users</a></div>
+          </div>
+        </nav>
+      </section>
+    </header>
+
     <main>
-  <section id="get-api">
-    <h2>GET /api</h2>
-    <p>This endpoint returns a JSON object describing all the available endpoints in the API, along with their methods and descriptions.</p>
-    <p><strong>Route Parameter:</strong> None</p>
-    <p><strong>Query Parameters:</strong> None</p>
-    <p><strong>Request Body:</strong> Not required</p>
-    <p><strong>Example Response:</strong></p>
-    <pre class ="code-block"><code>
-</code>
-</pre>
-  <section id="get-topics">
-    <h2>GET /api/topics</h2>
-    <p>This endpoint returns a list of all available topics on the site. Each topic groups related articles together.</p>
-    <p><strong>Route Parameter:</strong> None</p>
-    <p><strong>Query Parameters:</strong> None</p>
-    <p><strong>Request Body:</strong> Not required</p>
-    <p><strong>Example Response:</strong></p>
-    <pre class ="code-block"><code>
-</code>
-</pre>
-</section>
-<section id="get-articles">
-  <h2>GET /api/articles</h2>
-  <p>This endpoint returns a list of all articles. Articles can be filtered, sorted, and ordered using optional query parameters.</p>
+      <section class="endpoints" id="get-api">
+        <h2><a href="https://nc-news-by3b.onrender.com/api" target="_blank">GET /api</a></h2>
+        <p>Returns a JSON object describing all available endpoints, including methods and descriptions.</p>
+        <p><strong>Route Parameter:</strong> None</p>
+        <p><strong>Query Parameters:</strong> None</p>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>{
+  "endpoints": {
+    "GET /api/topics": "Returns all topics",
+    "GET /api/articles": "Returns all articles",
+    "GET /api/articles/:article_id": "Returns a single article by ID",
+    "PATCH /api/articles/:article_id": "Updates the vote count for an article",
+    "GET /api/articles/:article_id/comments": "Returns comments for a given article",
+    "POST /api/articles/:article_id/comments": "Adds a new comment to an article",
+    "DELETE /api/comments/:comment_id": "Deletes a comment by ID",
+    "GET /api/users": "Returns all users"
+  }
+}</code></pre>
+      </section>
 
-  <p><strong>Route Parameter:</strong> None</p>
-  <p><strong>Query Parameters:</strong></p>
-  <ul>
-    <li>Filter articles by topic</li>
-    <li>Sort articles by any valid column, e.g.created_at, votes, comment_count</li>
-    <li>Order by ascending or descending (default is descending</li>
-  </ul>
+      <section class="endpoints" id="get-topics">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/topics" target="_blank">GET /api/topics</a></h2>
+        <p>Returns a list of all topics available on the site.</p>
+        <p><strong>Route Parameter:</strong> None</p>
+        <p><strong>Query Parameters:</strong> None</p>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>[
+  { "slug": "coding", "description": "Code is love, code is life" },
+  { "slug": "football", "description": "Footie news and opinions" },
+  { "slug": "cooking", "description": "Delicious recipes and cooking tips" }
+]</code></pre>
+      </section>
 
-  <p><strong>Request Body:</strong> Not required</p>
+      <section class="endpoints" id="get-articles">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/articles" target="_blank">GET /api/articles</a></h2>
+        <p>Returns all articles. You can filter, sort, and order them using query parameters.</p>
+        <p><strong>Route Parameter:</strong> None</p>
+        <p><strong>Query Parameters:</strong></p>
+        <ul>
+          <li>Filter by topic (e.g. ?topic=coding)</li>
+          <li>Sort by column (e.g. ?sort_by=votes)</li>
+          <li>Order ascending/descending (e.g. ?order=asc)</li>
+        </ul>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>[
+  { "article_id": 1, "title": "The Rise of Node.js", "topic": "coding", "author": "jessjelly", "votes": 100, "comment_count": 13 },
+  { "article_id": 2, "title": "Football Tactics in 2025", "topic": "football", "author": "grumpy19", "votes": 42, "comment_count": 5 }
+]</code></pre>
+      </section>
 
-  <p><strong>Example Response:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-</section>
-<section id="patch-article">
-  <h2>PATCH /api/articles/:article_id</h2>
-  <p>This endpoint allows you to update the vote count of a specific article by its article_id.</p>
+      <section class="endpoints" id="get-article-by-id">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1" target="_blank">GET /api/articles/:article_id</a></h2>
+        <p>Returns full details of a single article by <code>article_id</code>.</p>
+        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1)</p>
+        <p><strong>Query Parameters:</strong> None</p>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>{
+  "article_id": 1,
+  "title": "The Rise of Node.js",
+  "topic": "coding",
+  "author": "jessjelly",
+  "body": "Node.js has taken the backend world by storm...",
+  "created_at": "2020-07-09T20:11:00.000Z",
+  "votes": 100,
+  "comment_count": 13
+}</code></pre>
+      </section>
 
-  <p><strong>Route Parameter:</strong> The ID of the article you want to update (e.g./api/articles/1)</p>
-  <p><strong>Query Parameters:</strong> None</p>
-  <p><strong>Request Body:</strong> Required</p>
-  <pre class="code-block"><code>
-</code></pre>
-  <p><strong>Example Response:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-</section>
-<section id="get-comments">
-  <h2>GET /api/articles/:article_id/comments</h2>
-  <p>This endpoint returns all the comments for a specific article based on its <code>article_id</code>.</p>
+      <section class="endpoints" id="patch-article">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1" target="_blank">PATCH /api/articles/:article_id</a></h2>
+        <p>Update the vote count of a specific article.</p>
+        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1)</p>
+        <p><strong>Request Body:</strong></p>
+        <pre class="code-block"><code>{
+  "inc_votes": 1
+}</code></pre>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>{
+  "article_id": 1,
+  "votes": 101
+}</code></pre>
+      </section>
 
-  <p><strong>Route Parameter:</strong>The ID of the article whose comments you want to retrieve (e.g. /api/articles/1/comments)</p>
+      <section class="endpoints" id="get-comments">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1/comments" target="_blank">GET /api/articles/:article_id/comments</a></h2>
+        <p>Returns all comments for the specified article.</p>
+        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1/comments)</p>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>[
+  { "comment_id": 1, "author": "grumpy19", "body": "Great article!", "votes": 5, "created_at": "2020-07-09T20:11:00.000Z" }
+]</code></pre>
+      </section>
 
-  <p><strong>Query Parameters:</strong> None</p>
+      <section class="endpoints" id="post-comment">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/articles/1/comments" target="_blank">POST /api/articles/:article_id/comments</a></h2>
+        <p>Add a new comment to an article.</p>
+        <p><strong>Route Parameter:</strong> Article ID (e.g. /api/articles/1/comments)</p>
+        <p><strong>Request Body:</strong></p>
+        <pre class="code-block"><code>{
+  "username": "grumpy19",
+  "body": "This is my new comment!"
+}</code></pre>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>{
+  "comment_id": 2,
+  "author": "grumpy19",
+  "body": "This is my new comment!",
+  "votes": 0,
+  "created_at": "2025-09-30T20:00:00.000Z"
+}</code></pre>
+      </section>
 
-  <p><strong>Request Body:</strong> Not required</p>
+      <section class="endpoints" id="delete-comment">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/comments/1" target="_blank">DELETE /api/comments/:comment_id</a></h2>
+        <p>Deletes a comment by its ID.</p>
+        <p><strong>Route Parameter:</strong> Comment ID (e.g. /api/comments/1)</p>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>{
+  "msg": "Comment deleted"
+}</code></pre>
+      </section>
 
-  <p><strong>Example Response:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-</section>
-<section id="post-comment">
-  <h2>POST /api/articles/:article_id/comments</h2>
-  <p>This endpoint allows you to add a new comment to a specific article.</p>
-
-  <p><strong>Route Parameter:</strong> The ID of the article you want to comment on (e.g./api/articles/1/comments)</p>
-  <p><strong>Query Parameters:</strong> None</p>
-  <p><strong>Request Body:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-
-  <p><strong>Example Response:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-</section>
-<section id="delete-comment">
-  <h2>DELETE /api/comments/:comment_id</h2>
-  <p>This endpoint deletes a comment based on its comment ID.</p>
-
-  <p><strong>Route Parameter:</strong> The ID of the comment you want to delete (e.g. <code>/api/comments/12</code>)</p>
-
-  <p><strong>Query Parameters:</strong> None</p>
-
-  <p><strong>Request Body:</strong> Not required</p>
-
-  <p><strong>Example Response:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-</section>
-<section id="get-users">
-  <h2>GET /api/users</h2>
-  <p>This endpoint returns a list of all users on the site.</p>
-
-  <p><strong>Route Parameter:</strong> None</p>
-
-  <p><strong>Query Parameters:</strong> None</p>
-
-  <p><strong>Request Body:</strong> Not required</p>
-
-  <p><strong>Example Response:</strong></p>
-  <pre class="code-block"><code>
-</code></pre>
-</section>
+      <section class="endpoints" id="get-users">
+        <h2><a href="https://nc-news-by3b.onrender.com/api/users" target="_blank">GET /api/users</a></h2>
+        <p>Returns a list of all users.</p>
+        <p><strong>Route Parameter:</strong> None</p>
+        <p><strong>Request Body:</strong> Not required</p>
+        <p><strong>Example Response:</strong></p>
+        <pre class="code-block"><code>[
+  { "username": "jessjelly", "name": "Jess Jelly", "avatar_url": "https://example.com/avatar1.jpg" },
+  { "username": "grumpy19", "name": "Grumpy Cat", "avatar_url": "https://example.com/avatar2.jpg" }
+]</code></pre>
+      </section>
     </main>
+
     <footer></footer>
   </body>
 </html>

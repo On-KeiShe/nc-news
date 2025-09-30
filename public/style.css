@@ -1,7 +1,58 @@
-*{
-  font-family:Avenir;
+* {
+  margin: auto 0;
+}
+
+body {
+  background-image: url("newspaper-news-seamless-pattern-background-business-concept-illustration-news-symbol-pattern-vector.jpg");
+  background-repeat: repeat;
+  background-position: cover;
+    font-family: Avenir;
 }
 
 h1 {
+  text-align: center;
+  justify-items: center;
+  background-color: #cc5500;
+  color: white;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.467);
+}
 
+#intro {
+  text-align: center;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);}
+
+#navigation {
+  margin:20px;
+  margin-top: 50px;
+padding: 30px;
+background-color: white;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);
+  border-radius: 30px;
+    background-color: #f5ddcc;
+    color: #ae4b04;
+  }
+
+  h2{
+    margin-bottom: 40px;
+    color: #ae4b04;
+  }
+
+  .nav-grid {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.endpoints {
+    margin:20px;
+  margin-top: 50px;
+padding: 30px;
+background-color: white;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.668);
+  border-radius: 30px;
 }
